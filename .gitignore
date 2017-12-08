@@ -2,3 +2,8 @@
 **/build
 **/.nb-gradle
 **/tomcat.8080
+**/target
+**/.settings
+.classpath
+/hibernate/hibernateh2alone/hibernate/.project
+nbproject
