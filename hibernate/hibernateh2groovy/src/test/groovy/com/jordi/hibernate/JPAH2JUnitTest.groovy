@@ -5,7 +5,8 @@ package com.jordi.hibernate;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.jordi.model.Proyecto;
+
+import com.jordi.model.*
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -57,7 +58,9 @@ public class JPAH2JUnitTest {
             em.persist(new Proyecto("pia", "la pia no mola", true))
             em.persist(new Proyecto("was", "el was mola mas", true))
             em.persist(new Proyecto("mobile", "vaya kk de projecto", true))
-
+            
+            em.persist(new Usuario(codigo:"copep" ,nombre:"pepe",departamento:'ventas' ))
+            em.persist(new Usuario(codigo:"cojor" ,nombre:"jordi",departamento:'ventas' ))
             tx.commit()
         } catch (Exception e) {
             e.printStackTrace()

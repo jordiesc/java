@@ -3,18 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jordi.model;
+
+package com.jordi.model
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne
 
 /**
  *
- * @author SESCO31
+ * @author jordi
  */
+class Model {
+	
+}
+
 @Entity
 public class Proyecto implements Serializable {
 
@@ -32,5 +38,33 @@ public class Proyecto implements Serializable {
         this.activo = activo;
     }
 
+    
+}
+
+@Entity
+class Tarea {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id
+    String codigo
+    String descripcion
+    @ManyToOne
+    Proyecto proyecto
+    
+    
+	
+}
+
+@Entity
+class Usuario {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id
+    
+    String codigo
+    String nombre
+    String departamento
     
 }
