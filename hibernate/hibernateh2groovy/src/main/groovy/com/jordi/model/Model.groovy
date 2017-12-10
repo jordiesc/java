@@ -17,14 +17,12 @@ import javax.persistence.ManyToOne
  *
  * @author jordi
  */
-class Model {
-	
+class Model { 
 }
 
 @Entity
 public class Proyecto implements Serializable {
-
-    @Id
+      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id
     
@@ -36,9 +34,7 @@ public class Proyecto implements Serializable {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.activo = activo;
-    }
-
-    
+    }   
 }
 
 @Entity
@@ -50,21 +46,16 @@ class Tarea {
     String codigo
     String descripcion
     @ManyToOne
-    Proyecto proyecto
-    
-    
-	
+    Proyecto proyecto	
 }
 
 @Entity
 class Usuario {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id
     
     String codigo
     String nombre
-    String departamento
-    
+    String departamento   
 }
