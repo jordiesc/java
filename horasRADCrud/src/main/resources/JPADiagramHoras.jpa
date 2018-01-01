@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="org.jordi.horas" epkg="domain" v="4.7" rws="_151457998445010" Pws="_151457998445010" cws="_151457998445010" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_15145799844509" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="HoraPK" abs="false" class="Hora" v="true" jbn="false" xre="false" m="true" rootElement="_15145799844509" id="_1514580008524">
+        <jpa:ath>jordi</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" xvt="" name="hora" id="_151458102227523">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="mes" id="_151458121260425">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="referencia" id="_151458139649227">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="comentario" id="_151458141292328">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="timestamp" id="_151458149156929">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1514580421945" connected-attribute-id="_1514589738397321" v="true" xvt="" name="usuario" id="_1514589738394320">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1514580012866" v="true" xvt="" name="tarea" id="_1514589745917322">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1514580010791" v="true" xvt="" name="projecto" id="_1514589773444323">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_151458000853011">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Hora.findAll">
+            <jpa:query>Select e from Hora e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hora.findByHora">
+            <jpa:query>Select h from Hora h where h.Hora=:Hora</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hora.findByMes">
+            <jpa:query>Select h from Hora h where h.mes=:mes</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hora.findByReferencia">
+            <jpa:query>Select h from Hora h where h.referencia=:referencia</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hora.findByComentario">
+            <jpa:query>Select h from Hora h where h.comentario=:comentario</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hora.findByTimestamp">
+            <jpa:query>Select h from Hora h where h.timestamp=:timestamp</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProjectoPK" abs="false" class="Projecto" v="true" jbn="false" xre="false" m="false" rootElement="_15145799844509" id="_1514580010791">
+        <jpa:ath>jordi</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="descripcion" id="_151458015406917">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="activo" dv="true" id="_151458029144118">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:id attribute-type="String" v="true" xvt="" name="codigo" id="_151458001079413">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="true" nullable="true" insertable="true" updatable="true" length="12"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Projecto.findAll">
+            <jpa:query>Select e from Projecto e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Projecto.findByDescripcion">
+            <jpa:query>Select p from Projecto p where p.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Projecto.findByActivo">
+            <jpa:query>Select p from Projecto p where p.activo=:activo</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TareaPK" abs="false" class="Tarea" v="true" jbn="false" xre="false" m="true" rootElement="_15145799844509" id="_1514580012866">
+        <jpa:ath>jordi</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="descipcion" id="_151458037740119">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:id attribute-type="String" v="true" xvt="" name="codigo" id="_151458001287015">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="12"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Tarea.findAll">
+            <jpa:query>Select e from Tarea e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tarea.findByDescipcion">
+            <jpa:query>Select t from Tarea t where t.descipcion=:descipcion</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" v="true" jbn="false" xre="false" m="true" rootElement="_15145799844509" id="_1514580421945">
+        <jpa:ath>jordi</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="nombre" id="_151458069219222">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_1514580008524" connected-attribute-id="_1514589738394320" v="true" xvt="" name="horas" id="_1514589738397321">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_1514630063320" connected-attribute-id="_151463016507613" v="true" xvt="" name="perfils" id="_151463016506312">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="String" v="true" xvt="" name="codigo" id="_151458042194720">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="false" length="6"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Usuario.findAll">
+            <jpa:query>Select e from Usuario e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Usuario.findByNombre">
+            <jpa:query>Select u from Usuario u where u.nombre=:nombre</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PerfilPK" abs="false" class="Perfil" v="true" jbn="false" xre="false" m="false" rootElement="_15145799844509" id="_1514630063320">
+        <jpa:ath>jordi</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="code" id="_151463012594610">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="descripcion" id="_151463014002911">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_1514580421945" connected-attribute-id="_151463016506312" v="true" xvt="" name="usuarios" id="_151463016507613">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_15146300634208">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Perfil.findAll">
+            <jpa:query>Select e from Perfil e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Perfil.findByCode">
+            <jpa:query>Select p from Perfil p where p.code=:code</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Perfil.findByDescripcion">
+            <jpa:query>Select p from Perfil p where p.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_151457998445010">
+            <i ref="_1514580008524" x="179" y="8"/>
+            <i ref="_1514580012866" x="374" y="106"/>
+            <i ref="_1514580421945" x="16" y="106"/>
+            <i ref="_1514580010791" x="580" y="106"/>
+            <i ref="_1514630063320" x="268" y="261"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
