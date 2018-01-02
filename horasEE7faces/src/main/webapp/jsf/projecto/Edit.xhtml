@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectoEditDlg" widgetVar="ProjectoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProjectoTitle}">
+            <h:form id="ProjectoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProjectoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{projectoController.selected.codigo}" title="#{bundle.EditProjectoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditProjectoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{projectoController.selected.descripcion}" title="#{bundle.EditProjectoTitle_descripcion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectoController.update}" value="#{bundle.Save}" update="display,:ProjectoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProjectoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

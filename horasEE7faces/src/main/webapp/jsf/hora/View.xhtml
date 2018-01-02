@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HoraViewDlg" widgetVar="HoraViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewHoraTitle}">
+            <h:form id="HoraViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{horaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewHoraLabel_id}"/>
+                        <h:outputText value="#{horaController.selected.id}" title="#{bundle.ViewHoraTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewHoraLabel_hora}"/>
+                        <h:outputText value="#{horaController.selected.hora}" title="#{bundle.ViewHoraTitle_hora}"/>
+                        <h:outputText value="#{bundle.ViewHoraLabel_mes}"/>
+                        <h:outputText value="#{horaController.selected.mes}" title="#{bundle.ViewHoraTitle_mes}"/>
+                        <h:outputText value="#{bundle.ViewHoraLabel_referencia}"/>
+                        <h:outputText value="#{horaController.selected.referencia}" title="#{bundle.ViewHoraTitle_referencia}"/>
+                        <h:outputText value="#{bundle.ViewHoraLabel_comentario}"/>
+                        <h:outputText value="#{horaController.selected.comentario}" title="#{bundle.ViewHoraTitle_comentario}"/>
+                        <h:outputText value="#{bundle.ViewHoraLabel_timestamp}"/>
+                        <h:outputText value="#{horaController.selected.timestamp}" title="#{bundle.ViewHoraTitle_timestamp}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewHoraLabel_usuario}"/>
+                        <h:outputText value="#{horaController.selected.usuario}" title="#{bundle.ViewHoraTitle_usuario}"/>
+                        <h:outputText value="#{bundle.ViewHoraLabel_tarea}"/>
+                        <h:outputText value="#{horaController.selected.tarea}" title="#{bundle.ViewHoraTitle_tarea}"/>
+                        <h:outputText value="#{bundle.ViewHoraLabel_projecto}"/>
+                        <h:outputText value="#{horaController.selected.projecto}" title="#{bundle.ViewHoraTitle_projecto}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="HoraViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

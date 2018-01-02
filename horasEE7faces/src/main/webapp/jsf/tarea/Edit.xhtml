@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TareaEditDlg" widgetVar="TareaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTareaTitle}">
+            <h:form id="TareaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tareaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTareaLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{tareaController.selected.codigo}" title="#{bundle.EditTareaTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditTareaLabel_descipcion}" for="descipcion" />
+                        <p:inputText id="descipcion" value="#{tareaController.selected.descipcion}" title="#{bundle.EditTareaTitle_descipcion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tareaController.update}" value="#{bundle.Save}" update="display,:TareaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TareaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TareaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

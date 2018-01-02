@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HoraEditDlg" widgetVar="HoraEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditHoraTitle}">
+            <h:form id="HoraEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{horaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditHoraLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{horaController.selected.id}" title="#{bundle.EditHoraTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditHoraLabel_hora}" for="hora" />
+                        <p:inputText id="hora" value="#{horaController.selected.hora}" title="#{bundle.EditHoraTitle_hora}" />
+                        <p:outputLabel value="#{bundle.EditHoraLabel_mes}" for="mes" />
+                        <p:inputText id="mes" value="#{horaController.selected.mes}" title="#{bundle.EditHoraTitle_mes}" />
+                        <p:outputLabel value="#{bundle.EditHoraLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{horaController.selected.referencia}" title="#{bundle.EditHoraTitle_referencia}" />
+                        <p:outputLabel value="#{bundle.EditHoraLabel_comentario}" for="comentario" />
+                        <p:inputText id="comentario" value="#{horaController.selected.comentario}" title="#{bundle.EditHoraTitle_comentario}" />
+                        <p:outputLabel value="#{bundle.EditHoraLabel_timestamp}" for="timestamp" />
+                        <p:calendar id="timestamp" pattern="MM/dd/yyyy HH:mm:ss" value="#{horaController.selected.timestamp}" title="#{bundle.EditHoraTitle_timestamp}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditHoraLabel_usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{horaController.selected.usuario}" title="#{bundle.EditHoraTitle_usuario}" />
+                        <p:outputLabel value="#{bundle.EditHoraLabel_tarea}" for="tarea" />
+                        <p:selectOneMenu id="tarea" value="#{horaController.selected.tarea}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tareaController.itemsAvailableSelectOne}"
+                                           var="tareaItem"
+                                           itemValue="#{tareaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditHoraLabel_projecto}" for="projecto" />
+                        <p:selectOneMenu id="projecto" value="#{horaController.selected.projecto}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectoController.itemsAvailableSelectOne}"
+                                           var="projectoItem"
+                                           itemValue="#{projectoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{horaController.update}" value="#{bundle.Save}" update="display,:HoraListForm:datalist,:growl" oncomplete="handleSubmit(args, 'HoraEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HoraEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
