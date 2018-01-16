@@ -1,0 +1,69 @@
+## TimeSpreadSheet con JAXRS, Spring Boot y MVC con view JSP y swagger configurado
+
+* swagger definition
+
+http://localhost:8080/rest/swagger.json
+
+* database 
+
+http://localhost:8080/h2-console
+url jdbc:h2:~/testDB
+user sa
+
+* jsp de ejemplo url 
+
+http://localhost:8080/view/holamundo
+
+### Key concepts
+
+Spring MVC tiene un Servlet dispatcher al igual que jaxrs se ha tenido que configurar un context root or document base distinto con el valor /rest
+
+[source,java]
+----
+    @Bean
+	public ServletRegistrationBean jerseyServlet() throws ServletException {
+	    ServletContainer servlet = new ServletContainer();
+	    ServletRegistrationBean registration = new ServletRegistrationBean(servlet, "/rest/*");
+	    registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
+	    return registration;
+	}
+----
+
+Asi mismo se ha tenido que modificar el default del swagger para que funcionarse 
+
+
+[source,java]
+----
+	private void configureSwagger() {
+		register(ApiListingResource.class);
+		BeanConfig beanConfig = new BeanConfig();
+
+		beanConfig.setBasePath("/rest");
+		beanConfig.setTitle("swagger, spring, jax-rs API Sample");
+		beanConfig.setPrettyPrint(true);
+
+		beanConfig.setResourcePackage("com.timesheet.rs");
+		beanConfig.setScan();
+	}
+
+----
+
+y por ultimo para que el MVC sea capaz de pilar los jsps 
+
+public class TimeSpreadSheetApplication  extends SpringBootServletInitializer {
+[source,java]
+----
+	public static void main(String[] args) {
+		SpringApplication.run(TimeSpreadSheetApplication.class, args);
+	}
+	
+	...
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(TimeSpreadSheetApplication.class);
+	}
+
+}
+
+----
