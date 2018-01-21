@@ -1,0 +1,10 @@
+
+* test with spring security
+ with MVC and rest and Hal to test configurations fo the Security
+
+standart url h2
+jdbc:h2:mem:testdb
+
+URL
+
+http://localhost:8080
