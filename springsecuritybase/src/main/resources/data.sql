@@ -4,4 +4,3 @@ insert into Proyecto  (codigo, descripcion, usuario) values('appl','proyect 1','
 insert into Proyecto  (codigo, descripcion, usuario) values('ams','mantenim ','jordi')
 insert into Proyecto  (codigo, descripcion, usuario) values('ams','mantenim ','jose')
 
-
