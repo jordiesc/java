@@ -1,0 +1,43 @@
+
+* test with spring security
+jdbc:h2:mem:testdb
+
+** AbstractAuthenticationProcessingFilter
+
+es un filtro que recoge el mensaje http las variables necesarias headrs, o bien
+parameters para crear un injecta un AuthenticationManager y se lepasara un 
+objeto Autenticatin para realizar la authentication, si va todo ok se guardara
+el objeto en el Contexto. La implementecion mas usual es la  
+:source-highlighter: UsernamePasswordAuthenticationFilter
+
+** Authentication
+
+Representa el principal, esto es el usuario logoneado o no contiene el usuario, 
+pwd del mensaje http que llega. Tiene una propiedad 
+
+el metodo que autentifia es decir valida el usuario y pwd es el 
+
+AuthenticationManager.authenticate(Authentication)
+
+una vez pasado por aqui la inforamcion esta accesible en la aplicacion usando el 
+SecurityContextHolder.getContext()
+
+**UserDetails
+
+Representa la informacion obtenida de la persistencia (tambien puede ser memoria)
+es decir sule ser la informacion obtenida de la base de datos.
+
+En spring se suele guardar muchos objetos a nivel de Object por lo que habra que 
+hacer los terribles cast.
+[soure,java]
+----
+Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+String username = ((UserDetails)principal).getUsername();
+----
+
+**UserDetailsService
+Carga o busca el objeto UserDetails
+[source,java]
+----
+UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+----
