@@ -4,5 +4,5 @@ insert into Proyecto  (codigo, descripcion, usuario) values('appl','proyect 1','
 insert into Proyecto  (codigo, descripcion, usuario) values('ams','mantenim ','jordi')
 insert into Proyecto  (codigo, descripcion, usuario) values('ams','mantenim ','jose')
 
-insert into user (username,password) values('jordi','omd',true)
+insert into users (username,password,enabled) values('jordi','omd',true)
 insert into authorities (username,authority) values('jordi','JEFE')
