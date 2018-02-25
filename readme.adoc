@@ -1,0 +1,11 @@
+=== Boundle of Java Projects it includes.
+
+* embededtomcat
+* takeupmemory. Java Mainn application to takeup memory during certain tiempo. Used to do benchmarks
+* hibernate. Simple hibernate stand alone project with no server and H2 embeded database. Used to
+	test JPA. it has also a Groovy version to take adavatage of easeness of Groovy to create class
+	 with no boilerplate 
+* horasEE7faces. Simple Java web application done with netbenas wizards. It has JSF and primefaces.
+	It requires a JEE server and data base and its data source. Tested in Glasfish Server
+* horasSpringJaxrsJsp. Test of Jaxrs with Jersy along MVC viwth JSP view
+* springsecuritybase. Sample of spring security basics
