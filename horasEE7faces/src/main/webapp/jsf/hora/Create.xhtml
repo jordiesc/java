@@ -27,17 +27,23 @@
                         <p:outputLabel value="#{bundle.CreateHoraLabel_usuario}" for="usuario" />
                         <p:inputText id="usuario" value="#{horaController.selected.usuario}" title="#{bundle.CreateHoraTitle_usuario}" />
                         <p:outputLabel value="#{bundle.CreateHoraLabel_tarea}" for="tarea" />
-                        <p:selectOneMenu id="tarea" value="#{horaController.selected.tarea}" >
-                            <f:selectItems value="#{tareaController.itemsAvailableSelectOne}"
+                        <p:selectOneMenu id="tarea" value="#{horaController.tarea}">
+                            <f:selectItem itemLabel="Select One" itemValue="" />
+                            <f:selectItems value="#{horaController.tareas}"
                                            var="tareaItem"
-                                           itemValue="#{tareaItem}"/>
+                                           itemLabel="#{tareaItem.codigo}"
+                                           itemValue="#{tareaItem}"/>                   
                         </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateHoraLabel_projecto}" for="projecto" />
-                        <p:selectOneMenu id="projecto" value="#{horaController.selected.projecto}" >
-                            <f:selectItems value="#{projectoController.itemsAvailableSelectOne}"
+                        <p:selectOneMenu id="projecto" value="#{horaController.proyecto}">
+                            <f:selectItem itemLabel="Select One" itemValue="" />
+                            <f:selectItems value="#{horaController.proyectos}"
                                            var="projectoItem"
-                                           itemValue="#{projectoItem}"/>
+                                           itemLabel="#{projectoItem.codigo}"
+                                           itemValue="#{projectoItem}"/>                   
                         </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{horaController.create}" value="#{bundle.Save}" update="display,:HoraListForm:datalist,:growl" oncomplete="handleSubmit(args,'HoraCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="HoraCreateDialog.hide()"/>

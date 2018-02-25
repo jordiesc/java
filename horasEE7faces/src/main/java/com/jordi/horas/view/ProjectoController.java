@@ -126,6 +126,7 @@ public class ProjectoController implements Serializable {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            System.out.println("en faces converter proyecto -1");
             if (value == null || value.length() == 0) {
                 return null;
             }
@@ -135,12 +136,14 @@ public class ProjectoController implements Serializable {
         }
 
         java.lang.String getKey(String value) {
+             System.out.println("en faces converter proyecto 0");
             java.lang.String key;
             key = value;
             return key;
         }
 
         String getStringKey(java.lang.String value) {
+             System.out.println("en faces converter proyecto 1");
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
@@ -148,6 +151,7 @@ public class ProjectoController implements Serializable {
 
         @Override
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+             System.out.println("en faces converter proyecto1");
             if (object == null) {
                 return null;
             }
