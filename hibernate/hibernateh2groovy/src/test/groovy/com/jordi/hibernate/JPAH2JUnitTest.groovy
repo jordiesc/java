@@ -19,11 +19,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
 /**
- *
- * @author SESCO31
- */
+*/
 public class JPAH2JUnitTest {
 
     public JPAH2JUnitTest() {
