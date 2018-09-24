@@ -9,4 +9,7 @@
 	It requires a JEE server and data base and its data source. Tested in Glasfish Server
 * horasSpringJaxrsJsp. Test of Jaxrs with Jersy along MVC viwth JSP view
 * springsecuritybase. Sample of spring security basics
-* hibernate/hibernate2groovy. Stand alone project with hiberante, groovy and h2 to play. Execute `gradle test --info`
+* hibernate PlayGround of some hibernate configurations. All can be runned with `gradle test --info`
+** hibernate2groovy. Stand alone project with hiberante, groovy and h2 to play. Execute 
+** hibernatelifecycle. Some test of hibernate to play with the lifecycle
+** hibernatesqlite. Sqlite dialect.	

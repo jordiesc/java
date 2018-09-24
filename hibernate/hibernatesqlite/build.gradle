@@ -21,9 +21,10 @@ test {
     }
 }
 
-repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
+repositories {    
+     maven { url "http://repo.maven.apache.org/maven2"}
+     maven { url "https://scm.umiacs.umd.edu/maven/adapt/content/repositories/releases"}
+     mavenCentral()
 }
 dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
@@ -31,7 +32,9 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.2'
     compile 'org.codehaus.groovy:groovy-all:2.5.1'
     compile group: 'org.hibernate', name: 'hibernate-core', version:'5.2.12.Final'
-    compile group: 'com.h2database', name: 'h2', version:'1.4.196'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.23.1'
+  
+    compile group: 'com.zsoltfabok', name: 'sqlite-dialect', version: '1.0'
     compile group: 'javax.persistence', name: 'javax.persistence-api', version:'2.2'
     //testCompile group: 'junit', name: 'junit', version:'4.12'
     testCompile group: 'org.hamcrest', name: 'hamcrest-core', version:'1.3'
