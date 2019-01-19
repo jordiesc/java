@@ -13,3 +13,4 @@
 ** hibernate2groovy. Stand alone project with hiberante, groovy and h2 to play. Execute 
 ** hibernatelifecycle. Some test of hibernate to play with the lifecycle
 ** hibernatesqlite. Sqlite dialect.	
+** openliberty. Small script to download and install liberty. Used to playground with several configs rapidly.

@@ -1,0 +1,6 @@
+== Install JEE8 full liberty.
+
+Execute installLibery <nameServer>.
+
+It donload the liberty version written inside script and install
+a server with name <nameServer>
