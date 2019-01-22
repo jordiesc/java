@@ -29,6 +29,6 @@ unzip ${SERVER}-${VERSION}.zip
 source wlp/usr/servers/$SERVERNAME/server.env
 
 sed -i -e "s/keystore_password/${keystore_password}/g" wlp/usr/servers/$SERVERNAME/server.xml
-sed -i -e "s/SERVERNAME/${SERVERNAME}/g" settings.gradle
+sed -i -e "s/SERVERNAME/${SERVERNAME}/g" build.gradle
 
 
