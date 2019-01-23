@@ -4,3 +4,34 @@ Execute installLibery <nameServer>.
 
 It donload the liberty version written inside script and install
 a server with name <nameServer>
+
+== Test It
+
+just to access to 
+http://localhost:9080/openliberty
+
+it has to a link to the servlet
+
+
+to test the API with curl
+
+----
+
+$ curl -H "Accept: application/json" -X GET http://localhost:9080/openliberty/api/post?id=miid  -i
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    69  100    69    0     0    633      0 --:--:-- --:--:-- --:--:--   633HTTP/1.1 200 OK
+X-Powered-By: Servlet/4.0
+Content-Type: application/json
+Date: Wed, 23 Jan 2019 14:13:30 GMT
+Content-Language: es-ES
+Content-Length: 69
+
+{"content":"this is a post content","id":"miid","title":"helloworld"}
+
+
+
+----
+
+
+
