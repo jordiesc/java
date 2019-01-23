@@ -17,7 +17,7 @@ public class HelloServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append("Hello new servidor newserver for application! this is a project JEE in OpenLiberty \n");
+        response.getWriter().append("Hello servlet JEE in OpenLiberty \n");
     }
 
     /**
