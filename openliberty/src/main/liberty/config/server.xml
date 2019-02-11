@@ -30,5 +30,23 @@
                   
     <!-- Automatically expand WAR files and EAR files -->
     <applicationManager autoExpand="true"/>
+  <!-- Derby Library Configuration -->    
+  <library id="h2JDBCLib">
+      <fileset dir="${wlp.install.dir}/../db/build/h2" includes="h2*.jar"/>
+  </library>
 
+  <!-- Datasource Configuration -->
+    <dataSource id="h2test" jndiName="jdbc/h2test">
+        <jdbcDriver 
+            javax.sql.XADataSource="org.h2.jdbcx.JdbcDataSource"
+            javax.sql.ConnectionPoolDataSource="org.h2.jdbcx.JdbcDataSource"
+            javax.sql.DataSource="org.h2.Driver"
+            libraryRef="H2JDBCLib"/>
+            <properties URL="jdbc:h2:tcp://localhost/~/test"/>
+    </dataSource>
 </server>
+jdbc:h2:tcp://localhost/~/test
+            <!-- javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource" 
+            jdbc:h2:tcp://localhost/~/test
+        <properties URL="jdbc:h1:mem:testdb"/>
+            -->

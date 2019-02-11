@@ -5,7 +5,7 @@ else
     SERVERNAME="testjee"
 fi
 export SERVERNAME
-export PATH_SERVER_XML="./src/resources/wlp/server.xml"
+PATH_SERVER_XML="./src/main/liberty/config/server.xml"
 
 export VERSION="18.0.0.4"
 export INSTALL_DIR="."
@@ -22,7 +22,7 @@ unzip ${SERVER}-${VERSION}.zip
 #rm ${SERVER}-${VERSION}.zip 
 
 ./wlp/bin/server create $SERVERNAME
-#cp -f $PATH_SERVER_XML wlp/usr/servers/$SERVERNAME/
+cp -f $PATH_SERVER_XML wlp/usr/servers/$SERVERNAME/
 
 #cd wlp/usr/servers/$SERVERNAME/
 
@@ -30,5 +30,11 @@ source wlp/usr/servers/$SERVERNAME/server.env
 
 sed -i -e "s/keystore_password/${keystore_password}/g" wlp/usr/servers/$SERVERNAME/server.xml
 sed -i -e "s/SERVERNAME/${SERVERNAME}/g" build.gradle
+
+shopt -s expand_aliases
+
+alias serverstart='wlp/bin/server start $SERVERNAME'
+alias serverstop='wlp/bin/server stop $SERVERNAME'
+
 
 
