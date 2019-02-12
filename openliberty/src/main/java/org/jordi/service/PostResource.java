@@ -1,8 +1,7 @@
 package org.jordi.service;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.sql.DataSource;
+import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -24,6 +23,7 @@ public class PostResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
+	@Transactional
 	public Post getByUd(@QueryParam("title") String title) {
 
 		System.out.print(title);
@@ -32,12 +32,9 @@ public class PostResource {
 		if (title != null)
 			pst.setTitle(title);
 		else
-			pst.setTitle("identifier");
-		pst.setTitle("helloworld");
+			pst.setTitle("default title");
 		pst.setContent("this is a post content");
-
 		postDao.createPost(pst);
-
 		return pst;
 	}
 
