@@ -52,5 +52,8 @@ Content-Length: 68
 
 ----
 
+swagger OpenApi
 
+http://localhost:9080/openapi
+http://localhost:9080/openapi/ui/
 

@@ -10,7 +10,7 @@ targetCompatibility = 1.8
 
 
 dependencies {
-    compile group: 'javax', name: 'javaee-api', version: '8.0' 
+    compileOnly group: 'javax', name: 'javaee-api', version: '8.0' 
     testCompile group: 'junit', name: 'junit', version:'4.12'
     testCompile group: 'commons-httpclient', name: 'commons-httpclient', version:'3.1'
 }
@@ -29,7 +29,7 @@ task deploy {
     dependsOn 'build'
     copy {
          from war.archivePath
-        into 'wlp/usr/servers/SERVERNAME/dropins'
+        into 'wlp/usr/servers/testjordi/dropins'
     }
 }
 

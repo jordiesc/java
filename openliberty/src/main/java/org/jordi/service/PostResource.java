@@ -13,7 +13,7 @@ import org.jordi.application.dao.PostDao;
 import org.jordi.model.Post;
 
 
-@Path("post")
+@Path("/post")
 public class PostResource {
 
 

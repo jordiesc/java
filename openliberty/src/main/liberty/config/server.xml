@@ -4,6 +4,7 @@
     <!-- Enable features -->
     <featureManager>
         <feature>javaee-8.0</feature>
+        <feature>mpOpenAPI-1.0</feature>
     </featureManager>
 
     <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
@@ -40,8 +41,13 @@
         <jdbcDriver 
             javax.sql.XADataSource="org.h2.jdbcx.JdbcDataSource"
             javax.sql.ConnectionPoolDataSource="org.h2.jdbcx.JdbcDataSource"
-            javax.sql.DataSource="org.h2.Driver"
+            javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"
             libraryRef="H2JDBCLib"/>
             <properties URL="jdbc:h2:tcp://localhost/~/test" user="sa" password="sa"/>
     </dataSource>
 </server>
+
+            <!-- javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource" 
+            jdbc:h2:tcp://localhost/~/test
+org.h2.Driver        <properties URL="jdbc:h1:mem:testdb"/>
+            -->
