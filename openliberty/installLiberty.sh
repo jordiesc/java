@@ -2,7 +2,7 @@
 if [ "$1" != "" ]; then
     SERVERNAME=$1
 else
-    SERVERNAME="testjee"
+   SERVERNAME=$(eval 'basename "$PWD"')
 fi
 export SERVERNAME
 PATH_SERVER_XML="./src/main/liberty/config/server.xml"
@@ -37,4 +37,9 @@ alias serverstart='wlp/bin/server start $SERVERNAME'
 alias serverstop='wlp/bin/server stop $SERVERNAME'
 
 
+cat << EOF > settings.gradle
 
+rootProject.name = "$SERVERNAME"
+include "db"
+
+EOF

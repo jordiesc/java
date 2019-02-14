@@ -29,7 +29,7 @@ task deploy {
     dependsOn 'build'
     copy {
          from war.archivePath
-        into 'wlp/usr/servers/testjordi/dropins'
+        into 'wlp/usr/servers/SERVERNAME/dropins'
     }
 }
 
