@@ -14,3 +14,4 @@
 ** hibernatelifecycle. Some test of hibernate to play with the lifecycle
 ** hibernatesqlite. Sqlite dialect.	
 * openliberty. Small script to download and install liberty. Used to playground with several configs rapidly.
+* openlibertycdi. based on the openliberty some samples of use of CDI, properties injection. login

@@ -1,0 +1,59 @@
+== Install JEE8 full liberty.
+
+Execute installLibery <nameServer>.
+
+It donload the liberty version written inside script and install
+a server with name <nameServer>
+
+== install DB and start.
+
+with gradle exec 
+`gradle downloadh2 runh2`
+
+look for the server.xml for the url user and pwd.
+----
+            <properties URL="jdbc:h2:tcp://localhost/~/test" user="sa" password="sa"/>
+----
+                        
+
+== Start the server
+
+there are some aliaass `serverstart` and `serverstop`
+
+== Test It
+
+To start the server
+
+`wlp/bin/server start <nameServer>`
+
+just to access to 
+http://localhost:9080/openliberty
+
+it has to a link to the servlet
+
+
+to test the API with curl
+
+----
+$ curl -H "Accept: application/json" -X GET http://localhost:9080/openliberty/api/post?title=holacaracola  -i
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    68  100    68    0     0   2193      0 --:--:-- --:--:-- --:--:--  2193HTTP/1.1 200 OK
+X-Powered-By: Servlet/4.0
+Content-Type: application/json
+Date: Tue, 12 Feb 2019 08:32:02 GMT
+Content-Language: es-ES
+Content-Length: 68
+
+{"content":"this is a post content","id":102,"title":"holacaracola"}
+
+
+
+
+----
+
+swagger OpenApi
+
+http://localhost:9080/openapi
+http://localhost:9080/openapi/ui/
+

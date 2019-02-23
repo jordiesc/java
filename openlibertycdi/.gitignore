@@ -1,0 +1,7 @@
+/wlp
+/.gradle
+/.settings
+/.vscode
+openliberty-*.zip
+.classpath
+.project
