@@ -1,4 +1,4 @@
-package com.jordi.h2db.demo.server;
+package org.jordi.h2db.demo.server;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package com.jordi.h2db.springboot.models;
+package org.jordi.h2db.springboot.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

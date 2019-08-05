@@ -1,9 +1,9 @@
-package com.jordi.h2db.springboot.daos;
+package org.jordi.h2db.springboot.daos;
 
 
 
 
-import com.jordi.h2db.springboot.models.User;
+import org.jordi.h2db.springboot.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {

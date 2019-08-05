@@ -1,4 +1,4 @@
-package com.jordi.h2db.auto.configuration;
+package org.jordi.h2db.auto.configuration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
