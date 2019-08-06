@@ -1,8 +1,8 @@
-package com.jordi;
+package org.jordi;
 
-import com.jordi.h2db.springboot.SpringBootH2Application;
-import com.jordi.h2db.springboot.daos.UserRepository;
-import com.jordi.h2db.springboot.models.User;
+import org.jordi.h2db.springboot.SpringBootH2Application;
+import org.jordi.h2db.springboot.daos.UserRepository;
+import org.jordi.h2db.springboot.models.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.jordi;
+package org.jordi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

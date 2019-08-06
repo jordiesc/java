@@ -49,6 +49,7 @@ public class JPAH2JUnitTest {
     public void loadDatabase() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2");
         EntityManager em = emf.createEntityManager();
+        
 
         EntityTransaction tx = em.getTransaction();
         tx.begin();

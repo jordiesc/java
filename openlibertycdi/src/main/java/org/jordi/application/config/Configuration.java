@@ -12,7 +12,7 @@ public class Configuration {
 
     @Produces
     @Property("")
-    String  valueofPropertie(InjectionPoint injectionPoint){
+    String  valueofProperty(InjectionPoint injectionPoint){
         System.out.println("en el Produces");
         Property property = injectionPoint.getAnnotated().getAnnotation(Property.class);
         return "clave mas "+ property.value();

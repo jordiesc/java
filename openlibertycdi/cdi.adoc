@@ -1,0 +1,60 @@
+== CDI in JEE-Jakarta EE
+
+Dependence injection commontly CI or CD/CI or CDI is the framework for JEE for dependence injection. Very similar to Spring. It also was know as IoC or inversion of control. the point is that de dependeces are injected instead of created by new... Injected means that the container created and pass the reference.... thats all....
+
+== Specification
+
+In case of OpenLiberty is based in JBooss implementation http://weld.cdi-spec.org/
+
+== Features
+=== Instalation
+
+In CDI 1.0 was necessary a file `META-INF/beans.xml` but not in poseterior. this file also can be located in anohter places.
+
+=== Scopes
+
+CDI is based in a concept of container which is actually a on memory key-value data object database. this container or database is partitionated in scopes so a bean only can see its neigbourds in its scope. the scope come from applications scope 
+
+* @RequestScoped
+* @SessionScoped
+* @ApplicationScoped
+* @ConversationScoped. This is similar to transacctional in jpa....
+
+=== Names
+
+El Names or @Name("myname") is a name to be referenced either JSP or JSF
+
+=== Creation
+
+The below sample create a Bean of type String... how does it solve conflicts?
+[source,java]
+----
+
+    @Produces
+    @Property("")
+    String  valueofProperty(InjectionPoint injectionPoint){
+        Property property = injectionPoint.getAnnotated().getAnnotation(Property.class);
+        return "clave mas "+ property.value();
+           }
+----
+
+=== Ambiguity.
+
+if CDI is actually a key-value. how does it  look up objects?. by the type. and the ambibuguity is solved with custom
+anotations or called @Qualifier.
+
+[source,java]
+----
+
+@Qualifier
+@Target({ ElementType.FIELD,ElementType.METHOD, ElementType.TYPE,ElementType.PARAMETER })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Property {
+    @Nonbinding 
+    String value() default "";
+
+----
+
+=== Use
+
+The most commotn is by *@Inject* similar to *@Autowired* in Spring althout it can also done programaticllay }
