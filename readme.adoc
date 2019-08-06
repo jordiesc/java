@@ -15,3 +15,4 @@
 ** hibernatesqlite. Sqlite dialect.	
 * openliberty. Small script to download and install liberty. Used to playground with several configs rapidly.
 * openlibertycdi. based on the openliberty some samples of use of CDI, properties injection. login
+* spring-boot-h2-persistence. Spring boot with h2 jpa. Some test about Transaccional
