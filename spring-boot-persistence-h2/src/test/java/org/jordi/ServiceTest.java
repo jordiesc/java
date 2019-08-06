@@ -1,6 +1,10 @@
 package org.jordi;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import java.nio.charset.Charset;
+import java.util.Random;
 
 import org.jordi.h2db.springboot.SpringBootH2Application;
 import org.jordi.h2db.springboot.daos.UserRepository;
@@ -24,7 +28,7 @@ public class ServiceTest {
     private UserService userService;
 
     @Before
-    public void inserteDB(){
+    public void inserteDB() {
 
         User user1 = new User();
         user1.setFirstName("Rachel");
@@ -39,14 +43,34 @@ public class ServiceTest {
         userRepository.save(user1);
         userRepository.save(user2);
 
-        
     }
 
     @Test
-    public void testTransaccion () {
-        userService.getGetOlder(1,1);
+    public void testTransaccion() {
+        userService.getGetOlder(1, 1);
         assertTrue("message", true);
 
     }
+
+    @Test
+    public void batchInsert() {
+        // RandomStringUtils
+    }
+
+    @Test
+    public void randomUser() {
+
+       User user = this.userService.createRandomUser();
+       assertNotNull(user);
+       assertNotNull(user.getFirstName());
+
+    }
+
+    @Test
+    public void testsave(){
+        int size = 10;
+        this.userService.insertRandomWithSave(10);
+    }
+
 
 }
