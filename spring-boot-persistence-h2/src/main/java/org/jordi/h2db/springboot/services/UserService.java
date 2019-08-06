@@ -43,6 +43,7 @@ public class UserService {
         }
     }
 
+    @Transactional
     public void insertRandomWithSave(int number){
 
         for(int i=0;i<number;i++){
@@ -51,7 +52,7 @@ public class UserService {
         }
 
     }
-
+    @Transactional
     public void insertRandomWithSaveAll(int number){
 
         List<User> users = new ArrayList<User>();

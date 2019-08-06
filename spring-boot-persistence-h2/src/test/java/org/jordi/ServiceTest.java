@@ -68,7 +68,6 @@ public class ServiceTest {
 
     @Test
     public void testsave(){
-        int size = 10;
         this.userService.insertRandomWithSave(10);
     }
 
