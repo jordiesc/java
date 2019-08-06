@@ -1,0 +1,70 @@
+== Repository Spring
+
+The use of @JPARepository or @CrudRepository is very handy, developers can do basic operations with no SQL operations. However it also hide the transaccion
+managemetn. By default every method has a transacciton scope. I have seen so many developers forget the use of @Transactional scope in their services. Hibernate 
+and JPA force to you to create a Transaccion but with the use of frameworks it is deep hide and frecuantly ommited, skipped or simplely unknown by mediocre developers
+
+== Behaviour without Transaction management
+
+the service produces different output depending of use of Transaccional scope
+
+[source,java]
+----
+    @Transactional
+    public void getGetOlder(int age, int plus) {
+
+        List<User> listUsers = repoUser.findByAgeGreaterThan(age);
+        for (User user : listUsers) {
+            user.setAge(user.getAge() + plus);
+            repoUser.save(user);
+        }
+    }
+----
+
+This give you a log with only one transaccion
+
+----
+2019-08-06 11:42:19,731 DEBUG [main] o.h.e.t.i.TransactionImpl [TransactionImpl.java:101] committing
+2019-08-06 11:42:19,731 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:141] Processing flush-time cascades
+2019-08-06 11:42:19,731 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:193] Dirty checking collections
+2019-08-06 11:42:19,733 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:115] Flushed: 0 insertions, 2 updates, 0 deletions to 2 objects
+2019-08-06 11:42:19,733 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:122] Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2019-08-06 11:42:19,734 DEBUG [main] o.h.i.u.EntityPrinter [EntityPrinter.java:110] Listing entities:
+2019-08-06 11:42:19,734 DEBUG [main] o.h.i.u.EntityPrinter [EntityPrinter.java:117] org.jordi.h2db.springboot.models.User{firstName=Joana, lastName=Fernandez, id=2, age=11}
+2019-08-06 11:42:19,734 DEBUG [main] o.h.i.u.EntityPrinter [EntityPrinter.java:117] org.jordi.h2db.springboot.models.User{firstName=Rachel, lastName=Fernandez, id=1, age=11}
+2019-08-06 11:42:19,735 DEBUG [main] o.h.SQL [SqlStatementLogger.java:94] update users set age=?, first_name=?, last_name=? where id=?
+2019-08-06 11:42:19,739 DEBUG [main] o.h.SQL [SqlStatementLogger.java:94] update users set age=?, first_name=?, last_name=? where id=?
+2019-08-06 11:42:19,759 DEBUG [Thread-3] o.h.i.SessionFactoryImpl [SessionFactoryImpl.java:792] HHH000031: Closing
+
+----
+
+whereras if you ommit the transaccion you will the below where you can see two commits instead of one.:
+
+----
+2019-08-06 12:00:19,763 DEBUG [main] o.h.e.t.i.TransactionImpl [TransactionImpl.java:101] committing
+2019-08-06 12:00:19,764 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:141] Processing flush-time cascades
+2019-08-06 12:00:19,765 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:193] Dirty checking collections
+2019-08-06 12:00:19,766 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:115] Flushed: 0 insertions, 1 updates, 0 deletions to 1 objects
+2019-08-06 12:00:19,767 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:122] Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2019-08-06 12:00:19,767 DEBUG [main] o.h.i.u.EntityPrinter [EntityPrinter.java:110] Listing entities:
+2019-08-06 12:00:19,768 DEBUG [main] o.h.i.u.EntityPrinter [EntityPrinter.java:117] org.jordi.h2db.springboot.models.User{firstName=Rachel, lastName=Fernandez, id=1, age=11}
+2019-08-06 12:00:19,769 DEBUG [main] o.h.SQL [SqlStatementLogger.java:94] update users set age=?, first_name=?, last_name=? where id=?
+2019-08-06 12:00:19,774 DEBUG [main] o.h.e.t.i.TransactionImpl [TransactionImpl.java:56] On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+2019-08-06 12:00:19,775 DEBUG [main] o.h.e.t.i.TransactionImpl [TransactionImpl.java:84] begin
+2019-08-06 12:00:19,776 DEBUG [main] o.h.l.Loader [Loader.java:2269] Loading entity: [org.jordi.h2db.springboot.models.User#2]
+2019-08-06 12:00:19,777 DEBUG [main] o.h.SQL [SqlStatementLogger.java:94] select user0_.id as id1_0_0_, user0_.age as age2_0_0_, user0_.first_name as first_na3_0_0_, user0_.last_name as last_nam4_0_0_ from users user0_ where user0_.id=?
+2019-08-06 12:00:19,780 DEBUG [main] o.h.l.Loader [DelegatingBasicLogger.java:384] Result set row: 0
+2019-08-06 12:00:19,781 DEBUG [main] o.h.l.Loader [Loader.java:1532] Result row: EntityKey[org.jordi.h2db.springboot.models.User#2]
+2019-08-06 12:00:19,784 DEBUG [main] o.h.e.i.TwoPhaseLoad [TwoPhaseLoad.java:145] Resolving associations for [org.jordi.h2db.springboot.models.User#2]
+2019-08-06 12:00:19,785 DEBUG [main] o.h.e.i.TwoPhaseLoad [TwoPhaseLoad.java:290] Done materializing entity [org.jordi.h2db.springboot.models.User#2]
+2019-08-06 12:00:19,785 DEBUG [main] o.h.l.Loader [Loader.java:2298] Done entity load
+2019-08-06 12:00:19,786 DEBUG [main] o.h.e.t.i.TransactionImpl [TransactionImpl.java:101] committing
+2019-08-06 12:00:19,787 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:141] Processing flush-time cascades
+2019-08-06 12:00:19,787 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:193] Dirty checking collections
+2019-08-06 12:00:19,788 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:115] Flushed: 0 insertions, 1 updates, 0 deletions to 1 objects
+2019-08-06 12:00:19,789 DEBUG [main] o.h.e.i.AbstractFlushingEventListener [AbstractFlushingEventListener.java:122] Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2019-08-06 12:00:19,789 DEBUG [main] o.h.i.u.EntityPrinter [EntityPrinter.java:110] Listing entities:
+2019-08-06 12:00:19,790 DEBUG [main] o.h.i.u.EntityPrinter [EntityPrinter.java:117] org.jordi.h2db.springboot.models.User{firstName=Joana, lastName=Fernandez, id=2, age=11}
+2019-08-06 12:00:19,790 DEBUG [main] o.h.SQL [SqlStatementLogger.java:94] update users set age=?, first_name=?, last_name=? where id=?
+2019-08-06 12:00:19,810 DEBUG [Thread-3] o.h.i.SessionFactoryImpl [SessionFactoryImpl.java:792] HHH000031: Closing
+----

@@ -44,7 +44,7 @@ public class ServiceTest {
 
     @Test
     public void testTransaccion () {
-        userService.getGetOlder(1,10);
+        userService.getGetOlder(1,1);
         assertTrue("message", true);
 
     }

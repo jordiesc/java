@@ -37,7 +37,7 @@ public class SpringBootH2IntegrationTest {
         User user1 = userRepository.findById(users.get(0).getId()).get();
         user1.setLastName(lastName);
         user1.setFirstName(firstName);
-        userRepository.save(user1);
+        userRepository.saveAndFlush(user1);
 
         user = userRepository.findById(user.getId()).get();
         assertEquals(user.getFirstName(), firstName);

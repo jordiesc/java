@@ -6,10 +6,14 @@
 package org.jordi.h2db.springboot.services;
 
 import java.util.List;
+
+//import javax.transaction.Transactional;
+
 import org.jordi.h2db.springboot.daos.UserRepository;
 import org.jordi.h2db.springboot.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -26,6 +30,7 @@ public class UserService {
      * 
      * @param age
      */
+     @Transactional
     public void getGetOlder(int age, int plus) {
 
         List<User> listUsers = repoUser.findByAgeGreaterThan(age);
