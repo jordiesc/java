@@ -1,0 +1,12 @@
+== Installation
+
+Use maven 3.3
+
+== Execution
+
+it has a servlet and Soap WS java initiated ws.
+
+== Test
+
+ curl http://localhost:8080/spring-classic-cxf-ws/helloservlet
+ curl http://localhost:8080/spring-classic-cxf-ws/services/HelloWorld?wsdl
