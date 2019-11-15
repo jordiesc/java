@@ -18,4 +18,5 @@
 * spring-boot-h2-persistence. Spring boot with h2 jpa. Some test about Transaccional
 * spring-classic-cxf-ws. Classic Spring Framework CI 5 (no boot) with CXF 3.2 jax-ws
 * simple web app. It is a maven simple web app with 1 servlet and 1 jsp to be deployed in web container.
+* jsftomcat A simple jsf (Mojarra) to be runned in tomcat with 
 the url will be `http://localhost:8080/SampleWebApp/mypath`
