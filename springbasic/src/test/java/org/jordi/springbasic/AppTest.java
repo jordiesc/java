@@ -37,15 +37,15 @@ public class AppTest
     public void testApp()
     {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-        ctx.scan("com.zetcode");
+        ctx.scan("org.jordi.springbasic");
         ctx.refresh();
 
-        var bean = ctx.getBean(Application.class);
-        bean.run();
+         BeanParent bean = ctx.getBean(BeanParent.class);
+        String message = bean.getBeanchild().getMessage();
 
         ctx.close();
 
-
-        assertTrue( true );
+        System.out.println(bean.getBeanchild().getClass());
+        assertEquals(message, "MESSAGE" );
     }
 }
