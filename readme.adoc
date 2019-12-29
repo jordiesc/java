@@ -20,3 +20,4 @@
 * simple web app. It is a maven simple web app with 1 servlet and 1 jsp to be deployed in web container.
 * jsftomcat A simple jsf (Mojarra) to be runned in tomcat with 
 the url will be `http://localhost:8080/SampleWebApp/mypath`
+* camelsample two samples of apache camel. reanem the class from 2 to 1 to test and run with gradle run.
