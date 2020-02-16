@@ -1,0 +1,5 @@
+== Run On Tomcat
+
+== Test url
+
+http://localhost:8080/jsfspring/hello.xhtml
