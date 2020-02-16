@@ -21,3 +21,4 @@
 * jsftomcat A simple jsf (Mojarra) to be runned in tomcat with 
 the url will be `http://localhost:8080/SampleWebApp/mypath`
 * camelsample two samples of apache camel. reanem the class from 2 to 1 to test and run with gradle run.
+* jsfspring sample derived of jsf but in addin Spring support
