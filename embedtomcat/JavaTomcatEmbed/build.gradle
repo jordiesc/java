@@ -11,12 +11,10 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'application'
-apply plugin: 'com.github.johnrengelman.shadow'
-
 
 sourceCompatibility = '1.8'
 mainClassName = "jordi.demo.MainDemo"
-def tomcatVersion = '7.0.57'
+def tomcatVersion = '8.0.48'
 
 //def tomcatVersion = '8.5.2'
 
@@ -31,7 +29,7 @@ repositories {
 
 
 dependencies {
-    // TODO: Add dependencies here ...
+    // TODO: Add dependencies here: ...
     // You can read more about how to add dependency here:
     //   http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
     testCompile group: 'junit', name: 'junit', version: '4.10'
@@ -42,15 +40,18 @@ dependencies {
     compile  "org.apache.tomcat:tomcat-jasper-el:$tomcatVersion" 
     compile  "org.apache.tomcat:tomcat-jsp-api:$tomcatVersion"
     compile  "org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion"
-    compile  "org.apache.tomcat.embed:tomcat-embed-logging-juli:$tomcatVersion"
+//    compile  "org.apache.tomcat.embed:tomcat-embed-logging-juli:$tomcatVersion"
     compile  "org.apache.tomcat.embed:tomcat-embed-jasper:$tomcatVersion"
     compile 'jstl:jstl:1.2'
 }
 
 jar {
     manifest {
-        attributes("Main-Class": mainClassName)
+        attributes("Main-Class": 'jordi.demo.MainDemo')
    }
+   baseName = 'myjar'
+    from {
+	        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	    }
 }
-
  
